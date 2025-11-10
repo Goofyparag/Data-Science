@@ -1,0 +1,1 @@
+[{"name": "code with paraga", "time": "50 mins"}, {"name": "chai or javascript backend", "time": "50 min "}]
