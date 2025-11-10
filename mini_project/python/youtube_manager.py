@@ -13,11 +13,13 @@ def save_data_helper(videos):
         json.dump(videos, file)
 
 def list_all_videos(videos):
-    if not videos:
-        print("No videos found!")
-        return
+    print('\n')
+    print("*" * 70)
+
     for index, video in enumerate(videos, start=1):
         print(f"{index}. Name: {video['name']}, Time: {video['time']}")
+    print('\n')
+    print("*" * 70)
 
 def add_videos(videos):
     name = input("Enter video name: ")
@@ -27,46 +29,25 @@ def add_videos(videos):
     print("Video added successfully!")
 
 def update_videos(videos):
-    if not videos:
-        print("No videos to update!")
-        return
-    
     list_all_videos(videos)
-    try:
-        index = int(input("Enter the number of the video to update: ")) - 1
-        if 0 <= index < len(videos):
-            name = input("Enter new video name (or press enter to keep current): ")
-            time = input("Enter new video time (or press enter to keep current): ")
-            
-            if name:
-                videos[index]["name"] = name
-            if time:
-                videos[index]["time"] = time
-                
-            save_data_helper(videos)
-            print("Video updated successfully!")
-        else:
-            print("Invalid video number!")
-    except ValueError:
-        print("Please enter a valid number!")
+    index = int(input("Enter the video number to update: "))
+    if 1<=index<=len(videos):
+        name=input("enter new video name: ")
+        time=input("enter new video time: ")
+        videos[index-1] = {"name": name, "time": time}
+        save_data_helper(videos)
+    else:
+        print("Invalid video number!")
 
 def delete_videos(videos):
-    if not videos:
-        print("No videos to delete!")
-        return
-    
     list_all_videos(videos)
-    try:
-        index = int(input("Enter the number of the video to delete: ")) - 1
-        if 0 <= index < len(videos):
-            deleted = videos.pop(index)
-            save_data_helper(videos)
-            print(f"Video '{deleted['name']}' deleted successfully!")
-        else:
-            print("Invalid video number!")
-    except ValueError:
-        print("Please enter a valid number!")
-
+    index = int(input("Enter the video number to delete: "))
+    if 1 <= index <= len(videos):
+        deleted = videos[index-1]
+        save_data_helper(videos)
+        print(f"Video '{deleted['name']}' deleted successfully!")
+    else:
+        print("Invalid video number!")
 def main():
     videos = load_data()
     while True:
