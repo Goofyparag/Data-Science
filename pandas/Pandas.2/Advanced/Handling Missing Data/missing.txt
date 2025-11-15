@@ -1,0 +1,7 @@
+NaN
+None
+
+isnull()
+
+True =  NaN is missing
+False =  Present
