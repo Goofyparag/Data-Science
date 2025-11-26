@@ -1,0 +1,20 @@
+# Navigate to your data science directory
+cd "d:\data science"
+
+# 1. Check current status
+git status
+
+# 2. Add all changes (new files, modified files, and deletions)
+git add -A
+
+# 3. Verify staged changes
+git status
+
+# 4. Commit all changes with a descriptive message
+git commit -m "Update: Added new notebooks and analysis reports; Fixed CSV encoding issues and matplotlib plotting errors; Added ANALYSIS_REPORT.md documentation"
+
+# 5. Push changes to GitHub
+git push origin demo-branch
+
+# 6. Verify the push was successful
+git log -1 --oneline
